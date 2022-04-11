@@ -1,0 +1,21 @@
+package com.example.DAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MyConnection {
+    public static Connection conn = null;
+
+    public MyConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/bank?allowPublicKeyRetrieval=TRUE&useSSL=FALSE";
+        try {
+            conn = DriverManager.getConnection(url, "mehdi", "12mehdi34");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+            conn.close();
+        }
+    }
+}
