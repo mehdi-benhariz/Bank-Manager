@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    String fullName;
+    String username;
     String password;
     String CIN;
     String RIB;
     List<String> roles;
 
-    public User(String fullName, String password, String CIN, String RIB) {
-        this.fullName = fullName;
+    public User(String username, String password, String CIN, String RIB) {
+        this.username = username;
         this.password = password;
         this.CIN = CIN;
         this.RIB = RIB;
@@ -22,12 +22,12 @@ public class User {
         };
     }
 
-    public String getFullName() {
-        return this.fullName;
+    public String getUserName() {
+        return this.username;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
