@@ -13,9 +13,8 @@ public class MyConnection {
             conn = DriverManager.getConnection(url, "mehdi", "12mehdi34");
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
-            conn.close();
+            // conn.close();
         }
     }
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.example.DAO.MyConnection;
+import com.example.utils.Security;
 
 /**
  * JavaFX App
@@ -21,12 +22,13 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
+
         stage.setScene(scene);
         stage.show();
         try {
             new MyConnection();
             System.out.println("Connection is successful");
-            MyConnection.conn.close();
+            // MyConnection.conn.close();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block

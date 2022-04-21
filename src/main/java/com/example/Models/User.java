@@ -1,25 +1,20 @@
 package com.example.Models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
     String username;
     String password;
     String CIN;
     String RIB;
-    List<String> roles;
+    String role;
+    Double balance;
 
-    public User(String username, String password, String CIN, String RIB) {
+    public User(String username, String password, String CIN, String RIB, String role) {
         this.username = username;
         this.password = password;
         this.CIN = CIN;
         this.RIB = RIB;
-        this.roles = new ArrayList<>() {
-            {
-                add("USER");
-            }
-        };
+        this.role = role;
+        this.balance = 0.0;
     }
 
     public String getUserName() {
@@ -54,16 +49,35 @@ public class User {
         this.RIB = RIB;
     }
 
-    public List<String> getRoles() {
-        return this.roles;
+    public String getRole() {
+        return this.role;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public void addRole(String role) {
-        this.roles.add(role);
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        // check if the balance is negative
+        if (balance < 0)
+            System.out.println("Balance can't be negative");
+        else
+            this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " username='" + getUserName() + "'" +
+                ", password='" + getPassword() + "'" +
+                ", CIN='" + getCIN() + "'" +
+                ", RIB='" + getRIB() + "'" +
+                ", role='" + getRole() + "'" +
+                "}";
     }
 
 }
