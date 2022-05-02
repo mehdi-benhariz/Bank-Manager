@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 
 public class LoginController {
     @FXML
-    TextField CIN;
-    TextField pwd;
+    public TextField CIN;
+    public TextField pwd;
 
     @FXML
     private void handleLogin() throws IOException {

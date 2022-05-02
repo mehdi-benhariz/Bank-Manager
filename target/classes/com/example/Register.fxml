@@ -17,8 +17,8 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField layoutX="191.0" layoutY="142.0" prefHeight="26.0" prefWidth="217.0" />
-      <TextField layoutX="191.0" layoutY="209.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="CIN" layoutX="191.0" layoutY="142.0" prefHeight="26.0" prefWidth="217.0" />
+      <TextField fx:id="fullName" layoutX="191.0" layoutY="209.0" prefHeight="26.0" prefWidth="218.0" />
       <Label layoutX="191.0" layoutY="109.0" prefHeight="26.0" prefWidth="160.0" text="Identity Card Number" textFill="#adefd1">
          <font>
             <Font name="Microsoft Sans Serif" size="14.0" />
@@ -39,6 +39,6 @@
             <Font name="Microsoft Sans Serif" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="190.0" layoutY="272.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="pwd" layoutX="190.0" layoutY="272.0" prefHeight="26.0" prefWidth="218.0" />
    </children>
 </AnchorPane>
