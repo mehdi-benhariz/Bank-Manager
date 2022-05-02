@@ -22,22 +22,15 @@ public class TransactionDAO {
                 // creating the source user
                 User source = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
                         rs.getString("RIB"), rs.getString("role"));
+                User destination = null;
                 if (rs.getString("type").equals("transfert")) {
-                    // todo handle the case of a transfert
-                    User destination = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
-                            rs.getString("RIB"), rs.getString("role"));
-                    transaction = new Transaction(rs.getString("id"),
-                            new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(rs.getDate("date")),
-                            rs.getString("type"),
-                            rs.getString("amount"),
-                            source, destination);
-                } else {
-                    transaction = new Transaction(rs.getString("id"),
-                            new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(rs.getDate("date")),
-                            rs.getString("type"),
-                            rs.getString("amount"),
-                            source);
+                    // destination = new User(rs.getString(columnLabel), password, CIN, RIB, role);
                 }
+                transaction = new Transaction(rs.getString("id"),
+                        new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(rs.getDate("date")),
+                        rs.getString("type"),
+                        rs.getString("amount"),
+                        source, destination);
                 transactions.add(transaction);
             }
         } catch (Exception e) {
