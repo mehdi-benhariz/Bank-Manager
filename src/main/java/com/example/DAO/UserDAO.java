@@ -29,13 +29,14 @@ public class UserDAO {
 
     public static boolean register(User user) {
         Boolean result = false;
-        String req = "INSERT INTO User (username, password,CIN ,RIB) VALUES (?,?,?,?)";
+        String req = "INSERT INTO User (username, password,CIN ,RIB,balance) VALUES (?,?,?,?,?)";
         try (Connection conn = MyConnection.conn;
                 PreparedStatement pstmt = conn.prepareStatement(req)) {
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, Security.hash(user.getPassword()));
             pstmt.setString(3, user.getCIN());
             pstmt.setString(4, user.getRIB());
+            pstmt.setDouble(5, user.getBalance());
             pstmt.executeUpdate();
             result = true;
         } catch (Exception e) {

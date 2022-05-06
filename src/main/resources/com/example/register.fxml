@@ -12,15 +12,15 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.RegisterController" >
    <children>
       <Polyline fill="#80ff0000" layoutX="48.0" layoutY="299.0" points="550.0, -173.1999969482422, 413.15057373046875, -173.1999969482422, 86.50892639160156, 42.0, -191.49110412597656, 42.0" stroke="#adedcfcc" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="256.0" layoutY="328.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Register">
+      <Button layoutX="256.0" layoutY="328.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Register" onAction="#handleRegister">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField layoutX="191.0" layoutY="141.0" prefHeight="26.0" prefWidth="217.0" />
-      <TextField layoutX="191.0" layoutY="203.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="CIN" layoutX="191.0" layoutY="141.0" prefHeight="26.0" prefWidth="217.0" />
+      <TextField fx:id="fullName" layoutX="191.0" layoutY="203.0" prefHeight="26.0" prefWidth="218.0" />
       <Label layoutX="191.0" layoutY="110.0" prefHeight="26.0" prefWidth="160.0" text="Identity Card Number" textFill="#adefd1">
          <font>
             <Font name="Microsoft Sans Serif" size="14.0" />
@@ -41,7 +41,7 @@
             <Font name="Microsoft Sans Serif" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="190.0" layoutY="260.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="pwd" layoutX="190.0" layoutY="260.0" prefHeight="26.0" prefWidth="218.0" />
       <Text fill="WHITE" layoutX="198.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="if you have an account, ">
          <font>
             <Font size="13.5" />
@@ -49,7 +49,7 @@
       </Text>
       <TextFlow layoutX="339.0" layoutY="296.0" prefHeight="18.0" prefWidth="61.0">
          <children>
-            <Text fill="#adefd1" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here" wrappingWidth="59.55078125">
+            <Text fill="#adefd1" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here" wrappingWidth="59.55078125" onMouseClicked="#handleLogin">
                <font>
                   <Font size="13.5" />
                </font>

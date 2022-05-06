@@ -25,15 +25,14 @@ public class LoginController {
             Notifier.showErrorMsg("fields required", "Please fill all the fields");
             return;
         }
-        System.out.println("CIN: " + CIN + " pwd: " + pwd);
         User user = UserDAO.login(CIN.toString(), pwd.toString());
-        System.out.println("user: " + user);
         if (user != null) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);
             App.setRoot("Home");
         } else {
             System.out.println("Login failed");
+            Notifier.showErrorMsg("Login failed", "somthing went wrong please try again");
 
             // todo add error message
         }
@@ -41,6 +40,6 @@ public class LoginController {
 
     @FXML
     private void handleRegister() throws IOException {
-        App.setRoot("Register");
+        App.setRoot("register");
     }
 }

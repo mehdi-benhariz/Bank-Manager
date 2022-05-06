@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.example.DAO.UserDAO;
 import com.example.Models.User;
 import com.example.utils.AuthProvider;
+import com.example.utils.Notifier;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -24,6 +25,8 @@ public class RegisterController {
         // input validation
         if (CIN.isEmpty() || fullName.isEmpty() || pwd.isEmpty()) {
             System.out.println("Please fill all the fields");
+            Notifier.showErrorMsg("fields required", "Please fill all the fields");
+
             return;
         }
         // generate a random RIB
@@ -35,11 +38,13 @@ public class RegisterController {
             App.setRoot("Home");
         } else {
             System.out.println("Register failed");
+            Notifier.showErrorMsg("Register failed", "somthing went wrong please try again");
+
         }
     }
 
     @FXML
     private void handleLogin() throws IOException {
-        App.setRoot("Login");
+        App.setRoot("login");
     }
 }

@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HomeController" >
    <children>
       <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="540.0, -138.40000915527344, 358.4000244140625, -138.40000915527344, 149.5999755859375, -22.39996337890625, -66.39999389648438, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="258.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Deposit" />
-      <Button layoutX="112.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Withdrraw" />
+      <Button layoutX="258.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Deposit" onAction="#handleDeposit" />
+      <Button layoutX="112.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Withdraw" onAction="#handleWithdraw" />
       <Ellipse fill="#b1b1b1" layoutX="300.0" layoutY="114.0" radiusX="100.0" radiusY="80.0" stroke="#adefd1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" />
-      <Text fill="#00203f" layoutX="214.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="95000 Dt" textAlignment="CENTER" wrappingWidth="171.543701171875">
+      <Text fx:id="amount" fill="#00203f" layoutX="214.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="95000 Dt" textAlignment="CENTER" wrappingWidth="171.543701171875">
          <font>
             <Font size="30.0" />
          </font>
@@ -25,6 +25,6 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="402.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Send" />
+      <Button layoutX="402.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Send" onAction="#handleSend" />
    </children>
 </AnchorPane>
