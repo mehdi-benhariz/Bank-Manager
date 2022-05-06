@@ -16,7 +16,7 @@ public class UserDAO {
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
-                User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
+                User user = new User(rs.getString("username"), password, rs.getString("CIN"),
                         rs.getString("RIB"), rs.getString("role"));
                 if (Security.compareHash(password, hashedPassword))
                     result = user;

@@ -28,7 +28,7 @@ public class RegisterController {
         }
         // generate a random RIB
         String RIB = "RIB" + (int) (Math.random() * 1000000);
-        User user = new User(CIN, fullName, pwd, RIB, "client");
+        User user = new User(fullName, pwd, CIN, RIB, "client");
         if (UserDAO.register(user)) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);

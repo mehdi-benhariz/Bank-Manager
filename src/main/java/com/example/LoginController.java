@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.example.DAO.UserDAO;
 import com.example.Models.User;
 import com.example.utils.AuthProvider;
+import com.example.utils.Notifier;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -21,12 +22,12 @@ public class LoginController {
         String pwd = this.pwd.getText();
         // input validation
         if (CIN.isEmpty() || pwd.isEmpty()) {
-            System.out.println("Please fill all the fields");
+            Notifier.showErrorMsg("fields required", "Please fill all the fields");
             return;
         }
-
-        User user = UserDAO.login(CIN, pwd);
-
+        System.out.println("CIN: " + CIN + " pwd: " + pwd);
+        User user = UserDAO.login(CIN.toString(), pwd.toString());
+        System.out.println("user: " + user);
         if (user != null) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);

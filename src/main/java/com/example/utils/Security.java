@@ -23,6 +23,8 @@ public class Security {
     }
 
     public static Boolean compareHash(String plainText, String hash) {
+        System.out.println(hash(plainText));
+        System.out.println(hash);
         return hash(plainText).equals(hash);
     }
 }
