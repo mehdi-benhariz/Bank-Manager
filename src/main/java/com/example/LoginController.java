@@ -29,7 +29,11 @@ public class LoginController {
         if (user != null) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);
-            App.setRoot("Home");
+            if (user.getRole().equals("admin"))
+                App.setRoot("admin");
+            else
+                App.setRoot("home");
+
         } else {
             System.out.println("Login failed");
             Notifier.showErrorMsg("Login failed", "somthing went wrong please try again");
