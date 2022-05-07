@@ -32,7 +32,7 @@ public class LoginController {
             if (user.getRole().equals("admin"))
                 App.setRoot("admin");
             else
-                App.setRoot("home");
+                App.setRoot("Home");
 
         } else {
             System.out.println("Login failed");

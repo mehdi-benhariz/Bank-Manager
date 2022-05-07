@@ -15,7 +15,9 @@ public class TransactionDAO {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
         ;
         String query = "select t.*, u.* from Transaction t, User u where t.source=u.CIN";
-        try (Connection conn = MyConnection.conn; PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(query);
             java.sql.ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Transaction transaction = null;
@@ -48,8 +50,9 @@ public class TransactionDAO {
                 ? "INSERT INTO Transaction (type,amount,source,destination) VALUES (?,?,?,?)"
                 : "INSERT INTO Transaction (type,amount,source) VALUES (?,?,?)";
 
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, tr.getType());
             pstmt.setDouble(2, Double.parseDouble(tr.getAmount()));
             pstmt.setString(3, tr.getSource().getCIN());
@@ -68,7 +71,9 @@ public class TransactionDAO {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
         ;
         String query = "SELECT * FROM transactions WHERE CIN = ?";
-        try (Connection conn = MyConnection.conn; PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {

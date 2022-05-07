@@ -35,4 +35,8 @@ public class HomeController implements Initializable {
         App.setRoot("deposit");
     }
 
+    @FXML
+    public void handleLogOut() throws IOException {
+        App.setRoot("login");
+    }
 }

@@ -10,8 +10,9 @@ public class UserDAO {
     public static User login(String CIN, String password) {
         User result = null;
         String req = "SELECT * FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -30,8 +31,9 @@ public class UserDAO {
     public static boolean register(User user) {
         Boolean result = false;
         String req = "INSERT INTO User (username, password,CIN ,RIB,balance) VALUES (?,?,?,?,?)";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, Security.hash(user.getPassword()));
             pstmt.setString(3, user.getCIN());
@@ -49,8 +51,9 @@ public class UserDAO {
     public static User getUserByCIN(String CIN) {
         User user = null;
         String req = "SELECT * FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -67,8 +70,9 @@ public class UserDAO {
     public static Boolean deleteUser(String CIN) {
         Boolean result = false;
         String req = "DELETE FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             pstmt.executeUpdate();
             result = true;
@@ -82,8 +86,9 @@ public class UserDAO {
     public static Boolean updateUser(User user) {
         Boolean result = false;
         String req = "UPDATE User SET username=?,password=?,CIN=?,RIB=?,role=? WHERE CIN=?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, Security.hash(user.getPassword()));
             pstmt.setString(3, user.getCIN());

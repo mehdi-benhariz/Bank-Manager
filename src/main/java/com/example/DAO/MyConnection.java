@@ -10,7 +10,7 @@ public class MyConnection {
     public MyConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/bank?allowPublicKeyRetrieval=TRUE&useSSL=FALSE";
         try {
-            conn = DriverManager.getConnection(url, "mehdi", "12mehdi34");
+            conn = DriverManager.getConnection(url, "root", "12mehdi34");
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
