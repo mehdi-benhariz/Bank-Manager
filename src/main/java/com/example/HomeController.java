@@ -26,8 +26,8 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    public void handleSend() throws IOException {
-        App.setRoot("send");
+    public void handleTransfer() throws IOException {
+        App.setRoot("transfer");
     }
 
     @FXML

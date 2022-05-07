@@ -17,6 +17,11 @@ public class User {
         this.balance = 0.0;
     }
 
+    public User(String username, String password, String CIN, String RIB, String role, Double balance) {
+        this(username, password, CIN, RIB, role);
+        this.balance = balance;
+    }
+
     public String getUserName() {
         return this.username;
     }

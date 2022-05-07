@@ -25,6 +25,6 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="402.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Send" onAction="#handleSend" />
+      <Button layoutX="402.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Send" onAction="#handleTransfer" />
    </children>
 </AnchorPane>

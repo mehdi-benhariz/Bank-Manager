@@ -18,7 +18,7 @@ public class UserDAO {
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
                 User user = new User(rs.getString("username"), password, rs.getString("CIN"),
-                        rs.getString("RIB"), rs.getString("role"));
+                        rs.getString("RIB"), rs.getString("role"), rs.getDouble("balance"));
                 if (Security.compareHash(password, hashedPassword))
                     result = user;
             }
@@ -85,7 +85,7 @@ public class UserDAO {
     // update user by CIN
     public static Boolean updateUser(User user) {
         Boolean result = false;
-        String req = "UPDATE User SET username=?,password=?,CIN=?,RIB=?,role=? WHERE CIN=?";
+        String req = "UPDATE User SET username=?,password=?,CIN=?,RIB=?,role=?,balance=? WHERE CIN=?";
         try {
             Connection conn = MyConnection.conn;
             PreparedStatement pstmt = conn.prepareStatement(req);
@@ -94,7 +94,8 @@ public class UserDAO {
             pstmt.setString(3, user.getCIN());
             pstmt.setString(4, user.getRIB());
             pstmt.setString(5, user.getRole());
-            pstmt.setString(6, user.getCIN());
+            pstmt.setDouble(6, user.getBalance());
+            pstmt.setString(7, user.getCIN());
             pstmt.executeUpdate();
             result = true;
         } catch (Exception e) {
