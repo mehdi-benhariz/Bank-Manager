@@ -27,7 +27,7 @@ public class LoginController {
         // return;
         // }
         // User user = UserDAO.login(CIN.toString(), pwd.toString());
-        User user = UserDAO.login("12345678", "test");
+        User user = UserDAO.login("87654321", "test");
         if (user != null) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);

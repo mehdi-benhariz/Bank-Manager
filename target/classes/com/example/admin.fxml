@@ -26,12 +26,12 @@
             <Image url="@Titles%20and%20Logos/account%20manager.png" />
          </image>
       </ImageView>
-      <TableView layoutX="59.0" layoutY="131.0" prefHeight="200.0" prefWidth="465.0">
+      <TableView fx:id="clients" layoutX="59.0" layoutY="131.0" prefHeight="200.0" prefWidth="465.0">
         <columns>
-          <TableColumn prefWidth="128.0" text="FullName" />
-          <TableColumn prefWidth="120.80006408691406" text="RIB" />
-            <TableColumn prefWidth="112.79996337890623" text="Amount" />
-            <TableColumn prefWidth="102.39998779296877" />
+          <TableColumn fx:id="username" prefWidth="128.0" text="username" />
+          <TableColumn fx:id="RIB" prefWidth="120.80006408691406" text="RIB" />
+            <TableColumn fx:id="amount" prefWidth="112.79996337890623" text="amount" />
+            <!-- <TableColumn prefWidth="102.39998779296877" /> -->
         </columns>
       </TableView>
       <Button layoutX="115.0" layoutY="347.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-cursor: pointer;" text="Log out" />
