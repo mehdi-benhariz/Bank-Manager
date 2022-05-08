@@ -13,8 +13,8 @@
    <children>
       <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="707.199951171875, -173.1999969482422, 347.9554443359375, -173.1999969482422, 149.5999755859375, -22.39996337890625, -289.199951171875, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
       <Button layoutX="256.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Transfer" onAction="#handleTransfer" />
-      <TextField layoutX="191.0" layoutY="192.0" prefHeight="26.0" prefWidth="217.0" />
-      <TextField layoutX="191.0" layoutY="245.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="receiver" layoutX="191.0" layoutY="192.0" prefHeight="26.0" prefWidth="217.0" />
+      <TextField fx:id="pwd" layoutX="191.0" layoutY="245.0" prefHeight="26.0" prefWidth="218.0" />
       <Label layoutX="191.0" layoutY="166.0" prefHeight="26.0" prefWidth="218.0" text="Reciever ICN" textFill="#adefd1">
          <font>
             <Font name="Microsoft Sans Serif" size="14.0" />
@@ -25,7 +25,7 @@
             <Font name="Microsoft Sans Serif" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="191.0" layoutY="135.0" prefHeight="26.0" prefWidth="217.0" />
+      <TextField fx:id="amount" layoutX="191.0" layoutY="135.0" prefHeight="26.0" prefWidth="217.0" />
       <Label layoutX="191.0" layoutY="109.0" prefHeight="26.0" prefWidth="160.0" text="Amount" textFill="#adefd1">
          <font>
             <Font name="Microsoft Sans Serif" size="14.0" />

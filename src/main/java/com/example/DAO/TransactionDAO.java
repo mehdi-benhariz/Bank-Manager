@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 public class TransactionDAO {
     public static ObservableList<Transaction> getAll() {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
-        ;
+
         String query = "select t.*, u.* from Transaction t, User u where t.source=u.CIN";
         try {
             Connection conn = MyConnection.conn;
@@ -45,8 +45,8 @@ public class TransactionDAO {
     public static Boolean add(Transaction tr) {
         Boolean result = false;
         // todo add distination in case of transfert
-        Boolean isTransfert = tr.getType().equals("transfert");
-        String req = isTransfert
+        Boolean isTransfer = tr.getType().equals("transfer");
+        String req = isTransfer
                 ? "INSERT INTO Transaction (type,amount,source,destination) VALUES (?,?,?,?)"
                 : "INSERT INTO Transaction (type,amount,source) VALUES (?,?,?)";
 
@@ -56,7 +56,7 @@ public class TransactionDAO {
             pstmt.setString(1, tr.getType());
             pstmt.setDouble(2, Double.parseDouble(tr.getAmount()));
             pstmt.setString(3, tr.getSource().getCIN());
-            if (isTransfert)
+            if (isTransfer)
                 pstmt.setString(4, tr.getDestination().getCIN());
             pstmt.executeUpdate();
             result = true;

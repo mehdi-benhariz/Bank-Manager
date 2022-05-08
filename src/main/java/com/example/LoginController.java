@@ -21,10 +21,11 @@ public class LoginController {
         String CIN = this.CIN.getText();
         String pwd = this.pwd.getText();
         // input validation
-        // // if (CIN.isEmpty() || pwd.isEmpty()) {
-        // // Notifier.showErrorMsg("fields required", "Please fill all the fields");
-        // // return;
-        // // }
+        // ?removed for now
+        // if (CIN.isEmpty() || pwd.isEmpty()) {
+        // Notifier.showErrorMsg("fields required", "Please fill all the fields");
+        // return;
+        // }
         // User user = UserDAO.login(CIN.toString(), pwd.toString());
         User user = UserDAO.login("12345678", "test");
         if (user != null) {

@@ -13,8 +13,12 @@ import javafx.scene.control.TextField;
 public class RegisterController {
     @FXML
     public TextField CIN;
+    @FXML
     public TextField fullName;
+    @FXML
     public TextField pwd;
+    @FXML
+    public TextField confirmPwd;
 
     @FXML
     private void handleRegister() throws IOException {
@@ -22,8 +26,9 @@ public class RegisterController {
         String CIN = this.CIN.getText();
         String fullName = this.fullName.getText();
         String pwd = this.pwd.getText();
+        String confirmPwd = this.confirmPwd.getText();
         // input validation
-        if (CIN.isEmpty() || fullName.isEmpty() || pwd.isEmpty()) {
+        if (CIN.isEmpty() || fullName.isEmpty() || pwd.isEmpty() || pwd.compareTo(confirmPwd) != 0) {
             System.out.println("Please fill all the fields");
             Notifier.showErrorMsg("fields required", "Please fill all the fields");
 

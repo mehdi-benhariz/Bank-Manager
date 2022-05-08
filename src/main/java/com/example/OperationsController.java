@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.DAO.TransactionDAO;
 import com.example.DAO.UserDAO;
+import com.example.Models.Transaction;
+import com.example.Models.User;
 import com.example.utils.AuthProvider;
 import com.example.utils.Notifier;
 
@@ -21,6 +24,8 @@ public class OperationsController implements Initializable {
     TextField amount;
     @FXML
     TextField pwd;
+    @FXML
+    TextField receiver;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -68,9 +73,12 @@ public class OperationsController implements Initializable {
             AuthProvider.getCurrentUser().setBalance(AuthProvider.getCurrentUser().getBalance() + amount);
             Notifier.showInfoMsg("Deposit Successful",
                     "Your balance is now " + AuthProvider.getCurrentUser().getBalance());
+            // update the user in the database
             UserDAO.updateUser(AuthProvider.getCurrentUser());
-            this.amount.setText("");
-            this.pwd.setText("");
+            // update the transaction in the database
+            TransactionDAO.add(new Transaction("deposit", Double.toString(amount), AuthProvider.getCurrentUser()));
+            this.amount.clear();
+            this.pwd.clear();
         }
     }
 
@@ -85,6 +93,8 @@ public class OperationsController implements Initializable {
             AuthProvider.getCurrentUser().setBalance(AuthProvider.getCurrentUser().getBalance() - amount);
             // add request to database
             UserDAO.updateUser(AuthProvider.getCurrentUser());
+            // update the transaction in the database
+            TransactionDAO.add(new Transaction("withdraw", Double.toString(amount), AuthProvider.getCurrentUser()));
             Notifier.showInfoMsg("Withdraw Successful",
                     "Your balance is now " + AuthProvider.getCurrentUser().getBalance());
             this.amount.setText("");
@@ -92,7 +102,36 @@ public class OperationsController implements Initializable {
         }
     }
 
-    public void handleSend() {
+    public void handleTransfer() {
+        if (checkPwd() && checkAmount()) {
+            if (Double.parseDouble(this.amount.getText()) > AuthProvider.getCurrentUser().getBalance()) {
+                Notifier.showErrorMsg("Login failed", "You don't have enough money");
+                return;
+            }
+            // check if destination user exists
+            User receiver = UserDAO.getUserByCIN(this.receiver.getText());
+            if (receiver == null) {
+                Notifier.showErrorMsg("Login failed", "User doesn't exist");
+                return;
+            }
+            double amount = Double.parseDouble(this.amount.getText());
+            // update the user in memory
+            AuthProvider.getCurrentUser().setBalance(AuthProvider.getCurrentUser().getBalance() - amount);
+            receiver.setBalance(receiver.getBalance() + amount);
+            // add request to database
+            UserDAO.updateUser(AuthProvider.getCurrentUser());
+            UserDAO.updateUser(receiver);
+            // update the transaction in the database
+            TransactionDAO
+                    .add(new Transaction("transfer", Double.toString(amount), AuthProvider.getCurrentUser(),
+                            receiver));
+            Notifier.showInfoMsg("Transfer Successful",
+                    "Your balance is now " + AuthProvider.getCurrentUser().getBalance());
+            this.amount.clear();
+            this.pwd.clear();
+            this.receiver.clear();
+        }
+
         // TODO implement
     }
 

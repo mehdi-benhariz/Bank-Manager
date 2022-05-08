@@ -10,14 +10,27 @@ public class Transaction {
     User source;
     User destination;
 
-    public Transaction(String id, String date, String type, String amount, User source) {
-        this.id = id;
-        this.date = date;
+    // used to create class before adding it to the database
+    public Transaction(String type, String amount, User source) {
         this.type = type;
         this.amount = amount;
         this.source = source;
     }
 
+    // used to create class after getting it from database
+    public Transaction(String id, String date, String type, String amount, User source) {
+        this(type, amount, source);
+        this.id = id;
+        this.date = date;
+    }
+
+    // used to create class before adding it to the database
+    public Transaction(String type, String amount, User source, User destination) {
+        this(type, amount, source);
+        this.destination = destination;
+    }
+
+    // used to create class after getting it from database
     public Transaction(String id, String date, String type, String amount, User source, User destination) {
         this(id, date, type, amount, source);
         this.destination = destination;

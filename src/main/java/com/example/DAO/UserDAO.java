@@ -58,7 +58,7 @@ public class UserDAO {
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 user = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
-                        rs.getString("RIB"), rs.getString("role"));
+                        rs.getString("RIB"), rs.getString("role"), rs.getDouble("balance"));
             }
         } catch (Exception e) {
             e.printStackTrace();
