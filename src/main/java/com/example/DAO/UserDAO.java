@@ -10,14 +10,15 @@ public class UserDAO {
     public static User login(String CIN, String password) {
         User result = null;
         String req = "SELECT * FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
-                User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
-                        rs.getString("RIB"), rs.getString("role"));
+                User user = new User(rs.getString("username"), password, rs.getString("CIN"),
+                        rs.getString("RIB"), rs.getString("role"), rs.getDouble("balance"));
                 if (Security.compareHash(password, hashedPassword))
                     result = user;
             }
@@ -29,13 +30,15 @@ public class UserDAO {
 
     public static boolean register(User user) {
         Boolean result = false;
-        String req = "INSERT INTO User (username, password,CIN ,RIB) VALUES (?,?,?,?)";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        String req = "INSERT INTO User (username, password,CIN ,RIB,balance) VALUES (?,?,?,?,?)";
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, Security.hash(user.getPassword()));
             pstmt.setString(3, user.getCIN());
             pstmt.setString(4, user.getRIB());
+            pstmt.setDouble(5, user.getBalance());
             pstmt.executeUpdate();
             result = true;
         } catch (Exception e) {
@@ -48,13 +51,14 @@ public class UserDAO {
     public static User getUserByCIN(String CIN) {
         User user = null;
         String req = "SELECT * FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 user = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
-                        rs.getString("RIB"), rs.getString("role"));
+                        rs.getString("RIB"), rs.getString("role"), rs.getDouble("balance"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,8 +70,9 @@ public class UserDAO {
     public static Boolean deleteUser(String CIN) {
         Boolean result = false;
         String req = "DELETE FROM User WHERE CIN =?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, CIN);
             pstmt.executeUpdate();
             result = true;
@@ -80,15 +85,17 @@ public class UserDAO {
     // update user by CIN
     public static Boolean updateUser(User user) {
         Boolean result = false;
-        String req = "UPDATE User SET username=?,password=?,CIN=?,RIB=?,role=? WHERE CIN=?";
-        try (Connection conn = MyConnection.conn;
-                PreparedStatement pstmt = conn.prepareStatement(req)) {
+        String req = "UPDATE User SET username=?,password=?,CIN=?,RIB=?,role=?,balance=? WHERE CIN=?";
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, Security.hash(user.getPassword()));
             pstmt.setString(3, user.getCIN());
             pstmt.setString(4, user.getRIB());
             pstmt.setString(5, user.getRole());
-            pstmt.setString(6, user.getCIN());
+            pstmt.setDouble(6, user.getBalance());
+            pstmt.setString(7, user.getCIN());
             pstmt.executeUpdate();
             result = true;
         } catch (Exception e) {

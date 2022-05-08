@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polyline?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.AdminController">
+ <children>
+      <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="707.199951171875, -173.1999969482422, 428.00006103515625, -173.1999969482422, 36.00004577636719, -22.39996337890625, -289.199951171875, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
+      <Button layoutX="172.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="195.0" style="-fx-cursor: pointer;" text="Transfer history" />
+      <TextField fx:id="searchText" layoutX="63.0" layoutY="89.0" prefHeight="26.0" prefWidth="336.0" />
+      <ImageView fitHeight="47.0" fitWidth="351.0" layoutX="121.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Titles%20and%20Logos/account%20manager.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="clients" layoutX="59.0" layoutY="131.0" prefHeight="200.0" prefWidth="465.0">
+        <columns>
+          <TableColumn fx:id="username" prefWidth="128.0" text="FullName" />
+          <TableColumn fx:id="RIB" prefWidth="120.80006408691406" text="RIB" />
+            <TableColumn fx:id="amount" prefWidth="112.79996337890623" text="Amount" />
+            <TableColumn prefWidth="102.39998779296877" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="26.0" layoutY="16.0" onMouseClicked="#handleExit" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@Titles%20and%20Logos/arrow.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="408.0" layoutY="89.0" mnemonicParsing="false" onAction="#searchAcc" prefHeight="26.0" prefWidth="113.0" style="-fx-cursor: pointer;" text="shearch" />
+   </children>
+</AnchorPane>
