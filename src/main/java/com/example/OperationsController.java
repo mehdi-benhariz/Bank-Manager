@@ -76,7 +76,8 @@ public class OperationsController implements Initializable {
             // update the user in the database
             UserDAO.updateUser(AuthProvider.getCurrentUser());
             // update the transaction in the database
-            TransactionDAO.add(new Transaction("deposit", Double.toString(amount), AuthProvider.getCurrentUser()));
+            TransactionDAO
+                    .add(new Transaction("deposit", Double.toString(amount), AuthProvider.getCurrentUser().getCIN()));
             this.amount.clear();
             this.pwd.clear();
         }
@@ -94,7 +95,8 @@ public class OperationsController implements Initializable {
             // add request to database
             UserDAO.updateUser(AuthProvider.getCurrentUser());
             // update the transaction in the database
-            TransactionDAO.add(new Transaction("withdraw", Double.toString(amount), AuthProvider.getCurrentUser()));
+            TransactionDAO
+                    .add(new Transaction("withdraw", Double.toString(amount), AuthProvider.getCurrentUser().getCIN()));
             Notifier.showInfoMsg("Withdraw Successful",
                     "Your balance is now " + AuthProvider.getCurrentUser().getBalance());
             this.amount.setText("");
@@ -123,8 +125,8 @@ public class OperationsController implements Initializable {
             UserDAO.updateUser(receiver);
             // update the transaction in the database
             TransactionDAO
-                    .add(new Transaction("transfer", Double.toString(amount), AuthProvider.getCurrentUser(),
-                            receiver));
+                    .add(new Transaction("transfer", Double.toString(amount), AuthProvider.getCurrentUser().getCIN(),
+                            receiver.getCIN()));
             Notifier.showInfoMsg("Transfer Successful",
                     "Your balance is now " + AuthProvider.getCurrentUser().getBalance());
             this.amount.clear();

@@ -22,17 +22,14 @@ public class TransactionDAO {
             while (rs.next()) {
                 Transaction transaction = null;
                 // creating the source user
-                User source = new User(rs.getString("username"), rs.getString("password"), rs.getString("CIN"),
-                        rs.getString("RIB"), rs.getString("role"));
-                User destination = null;
-                if (rs.getString("type").equals("transfert")) {
+                if (rs.getString("type").equals("transfer")) {
                     // destination = new User(rs.getString(columnLabel), password, CIN, RIB, role);
                 }
                 transaction = new Transaction(rs.getString("id"),
                         new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(rs.getDate("date")),
                         rs.getString("type"),
                         rs.getString("amount"),
-                        source, destination);
+                        rs.getString("source"), rs.getString("destination"));
                 transactions.add(transaction);
             }
         } catch (Exception e) {
@@ -44,7 +41,7 @@ public class TransactionDAO {
 
     public static Boolean add(Transaction tr) {
         Boolean result = false;
-        // todo add distination in case of transfert
+        // todo add distination in case of transfer
         Boolean isTransfer = tr.getType().equals("transfer");
         String req = isTransfer
                 ? "INSERT INTO Transaction (type,amount,source,destination) VALUES (?,?,?,?)"
@@ -55,9 +52,9 @@ public class TransactionDAO {
             PreparedStatement pstmt = conn.prepareStatement(req);
             pstmt.setString(1, tr.getType());
             pstmt.setDouble(2, Double.parseDouble(tr.getAmount()));
-            pstmt.setString(3, tr.getSource().getCIN());
+            pstmt.setString(3, tr.getSource());
             if (isTransfer)
-                pstmt.setString(4, tr.getDestination().getCIN());
+                pstmt.setString(4, tr.getDestination());
             pstmt.executeUpdate();
             result = true;
         } catch (Exception e) {
@@ -69,24 +66,46 @@ public class TransactionDAO {
 
     public static ObservableList getTransByUser(String CIN) {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
-        ;
-        String query = "SELECT * FROM transactions WHERE CIN = ?";
+        User source = UserDAO.getUserByCIN(CIN);
+        String query = "SELECT * FROM transactions WHERE source = ?";
         try {
             Connection conn = MyConnection.conn;
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, CIN);
             java.sql.ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                // Transaction transaction = new Transaction(rs.getString("id"),
-                // rs.getString("date"),
-                // rs.getString("type"), rs.getInt("amount"),
-                // rs.getInt(rs.getString("destination")));
-                // transactions.add(transaction);
+                Transaction transaction = new Transaction(rs.getString("id"),
+                        rs.getString("date"),
+                        rs.getString("type"), Double.toString(rs.getDouble("amount")),
+                        rs.getString("source"), rs.getString("destination"));
+                transactions.add(transaction);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return transactions;
+    }
+
+    public static ObservableList<Transaction> getTransactionsByQuery(String query) {
+        ObservableList<Transaction> transactions = FXCollections.observableArrayList();
+        String req = "SELECT * FROM Transactions WHERE source LIKE '%" + query + "%' ";
+        try {
+            Connection conn = MyConnection.conn;
+            PreparedStatement pstmt = conn.prepareStatement(req);
+
+            java.sql.ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Transaction transaction = new Transaction(rs.getString("id"),
+                        rs.getString("date"),
+                        rs.getString("type"), Double.toString(rs.getDouble("amount")),
+                        rs.getString("source"), rs.getString("destination"));
+                transactions.add(transaction);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return transactions;
+
     }
 
 }

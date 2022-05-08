@@ -74,15 +74,19 @@ public class User {
             this.balance = balance;
     }
 
+    // @Override
+    // public String toString() {
+    // return "{" +
+    // " username='" + getUserName() + "'" +
+    // ", password='" + getPassword() + "'" +
+    // ", CIN='" + getCIN() + "'" +
+    // ", RIB='" + getRIB() + "'" +
+    // ", role='" + getRole() + "'" +
+    // "}";
+    // }
     @Override
     public String toString() {
-        return "{" +
-                " username='" + getUserName() + "'" +
-                ", password='" + getPassword() + "'" +
-                ", CIN='" + getCIN() + "'" +
-                ", RIB='" + getRIB() + "'" +
-                ", role='" + getRole() + "'" +
-                "}";
+        return this.getRIB();
     }
 
 }

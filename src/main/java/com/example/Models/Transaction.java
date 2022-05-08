@@ -7,31 +7,31 @@ public class Transaction {
     String date;
     String type;
     String amount;
-    User source;
-    User destination;
+    String source;
+    String destination;
 
     // used to create class before adding it to the database
-    public Transaction(String type, String amount, User source) {
+    public Transaction(String type, String amount, String source) {
         this.type = type;
         this.amount = amount;
         this.source = source;
     }
 
     // used to create class after getting it from database
-    public Transaction(String id, String date, String type, String amount, User source) {
+    public Transaction(String id, String date, String type, String amount, String source) {
         this(type, amount, source);
         this.id = id;
         this.date = date;
     }
 
     // used to create class before adding it to the database
-    public Transaction(String type, String amount, User source, User destination) {
+    public Transaction(String type, String amount, String source, String destination) {
         this(type, amount, source);
         this.destination = destination;
     }
 
     // used to create class after getting it from database
-    public Transaction(String id, String date, String type, String amount, User source, User destination) {
+    public Transaction(String id, String date, String type, String amount, String source, String destination) {
         this(id, date, type, amount, source);
         this.destination = destination;
     }
@@ -71,19 +71,19 @@ public class Transaction {
             throw new IllegalArgumentException("Amount must be a number");
     }
 
-    public User getSource() {
+    public String getSource() {
         return this.source;
     }
 
-    public void setSource(User source) {
+    public void setSource(String source) {
         this.source = source;
     }
 
-    public User getDestination() {
+    public String getDestination() {
         return this.destination;
     }
 
-    public void setDestination(User destination) {
+    public void setDestination(String destination) {
         this.destination = destination;
     }
 
@@ -107,12 +107,12 @@ public class Transaction {
         return this;
     }
 
-    public Transaction source(User source) {
+    public Transaction source(String source) {
         setSource(source);
         return this;
     }
 
-    public Transaction destination(User destination) {
+    public Transaction destination(String destination) {
         setDestination(destination);
         return this;
     }

@@ -22,17 +22,17 @@ public class LoginController {
         String pwd = this.pwd.getText();
         // input validation
         // ?removed for now
-        // if (CIN.isEmpty() || pwd.isEmpty()) {
-        // Notifier.showErrorMsg("fields required", "Please fill all the fields");
-        // return;
-        // }
-        // User user = UserDAO.login(CIN.toString(), pwd.toString());
-        User user = UserDAO.login("87654321", "test");
+        if (CIN.isEmpty() || pwd.isEmpty()) {
+            Notifier.showErrorMsg("fields required", "Please fill all the fields");
+            return;
+        }
+        User user = UserDAO.login(CIN.toString(), pwd.toString());
+        // User user = UserDAO.login("12345678", "test");
         if (user != null) {
             AuthProvider.setCurrentUser(user);
             AuthProvider.setLogged(true);
             if (user.getRole().equals("admin"))
-                App.setRoot("admin");
+                App.setRoot("admin_Inter");
             else
                 App.setRoot("Home");
 

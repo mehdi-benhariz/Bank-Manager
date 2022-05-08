@@ -37,6 +37,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void handleLogOut() throws IOException {
+        AuthProvider.logout();
         App.setRoot("login");
     }
 }

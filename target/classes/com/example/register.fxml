@@ -15,7 +15,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.RegisterController">
    <children>
       <Polyline fill="#80ff0000" layoutX="48.0" layoutY="299.0" points="550.0, -173.1999969482422, 413.15057373046875, -173.1999969482422, 86.50892639160156, 42.0, -191.49110412597656, 42.0" stroke="#adedcfcc" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="256.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Register" >
+      <Button layoutX="256.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Register">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -53,7 +53,7 @@
             <Font name="Microsoft Sans Serif" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="confirmPwd" layoutX="189.0" layoutY="273.0" prefHeight="26.0" prefWidth="218.0" />
+      <TextField fx:id="pwd1" layoutX="189.0" layoutY="273.0" prefHeight="26.0" prefWidth="218.0" />
       <Text fill="#adefd1" layoutX="335.0" layoutY="335.0" onMouseClicked="#handleLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here" wrappingWidth="132.459228515625">
          <font>
             <Font size="13.5" />
