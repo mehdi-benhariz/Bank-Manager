@@ -9,11 +9,17 @@
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginController"  >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginController">
    <children>
       <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="550.0, -173.1999969482422, 347.9554443359375, -173.1999969482422, 149.5999755859375, -22.39996337890625, -66.39999389648438, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="350.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" text="Register" onAction="#handleRegister" />
-      <Button layoutX="168.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Login" onAction="#handleLogin" />
+      <Button layoutX="336.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: adefd1; -fx-background-color: white; -fx-border-width: 1; -fx-cursor: pointer;" text="Register" textFill="#adefd1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="171.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="28.0" prefWidth="95.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
       <TextField fx:id="CIN" layoutX="191.0" layoutY="172.0" prefHeight="26.0" prefWidth="217.0" />
       <TextField fx:id="pwd" layoutX="191.0" layoutY="243.0" prefHeight="26.0" prefWidth="218.0" />
       <Label layoutX="191.0" layoutY="135.0" prefHeight="26.0" prefWidth="160.0" text="Identity Card Number" textFill="#adefd1">

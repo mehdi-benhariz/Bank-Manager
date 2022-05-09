@@ -90,6 +90,7 @@ public class AdminController implements Initializable {
     public void searchAcc() {
         // todo fix this
         String query = searchText.getText();
+        System.out.println(query);
         users = AdminDAO.searchUsersByQuery(query);
         clients.setItems(users);
         clients.refresh();
@@ -98,6 +99,7 @@ public class AdminController implements Initializable {
 
     public void searchTr() {
         String query = searchText.getText();
+        System.out.println(query);
         transactions = TransactionDAO.getTransactionsByQuery(query);
         transfers.setItems(transactions);
         transfers.refresh();

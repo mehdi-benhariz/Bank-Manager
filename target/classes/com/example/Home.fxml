@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Line?>
@@ -8,11 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HomeController" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HomeController">
    <children>
       <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="540.0, -138.40000915527344, 358.4000244140625, -138.40000915527344, 149.5999755859375, -22.39996337890625, -66.39999389648438, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="258.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Deposit" onAction="#handleDeposit" />
-      <Button layoutX="112.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Withdraw" onAction="#handleWithdraw" />
       <Ellipse fill="#b1b1b1" layoutX="300.0" layoutY="114.0" radiusX="100.0" radiusY="80.0" stroke="#adefd1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" />
       <Text fx:id="amount" fill="#00203f" layoutX="214.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="95000 Dt" textAlignment="CENTER" wrappingWidth="171.543701171875">
          <font>
@@ -25,6 +25,25 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="402.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Send" onAction="#handleTransfer" />
+        <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="30.0" layoutY="26.0" onMouseClicked="#handleLogout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Titles%20and%20Logos/exit.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="104.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleWithdraw" prefHeight="35.0" prefWidth="114.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Withdraw" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="243.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleDeposit" prefHeight="35.0" prefWidth="114.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Deposit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="374.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleTransfer" prefHeight="35.0" prefWidth="114.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Send" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
