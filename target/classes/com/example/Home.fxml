@@ -45,5 +45,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <ImageView fitHeight="49.0" fitWidth="86.0" layoutX="528.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#launchChat">
+         <image>
+            <Image url="@Titles%20and%20Logos/chat.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
