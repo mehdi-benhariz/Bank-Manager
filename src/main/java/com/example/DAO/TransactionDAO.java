@@ -67,7 +67,7 @@ public class TransactionDAO {
     public static ObservableList getTransByUser(String CIN) {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
         User source = UserDAO.getUserByCIN(CIN);
-        String query = "SELECT * FROM transactions WHERE source = ?";
+        String query = "SELECT * FROM Transaction WHERE source = ?";
         try {
             Connection conn = MyConnection.conn;
             PreparedStatement pstmt = conn.prepareStatement(query);
@@ -88,7 +88,7 @@ public class TransactionDAO {
 
     public static ObservableList<Transaction> getTransactionsByQuery(String query) {
         ObservableList<Transaction> transactions = FXCollections.observableArrayList();
-        String req = "SELECT * FROM Transactions WHERE source LIKE '%" + query + "%' ";
+        String req = "SELECT * FROM Transaction WHERE source LIKE '%" + query + "%' ";
         try {
             Connection conn = MyConnection.conn;
             PreparedStatement pstmt = conn.prepareStatement(req);

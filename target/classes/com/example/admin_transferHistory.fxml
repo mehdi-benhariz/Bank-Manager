@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.AdminController">
    <children>
@@ -25,11 +26,15 @@
             <TableColumn fx:id="amountT" prefWidth="112.79996337890623" text="Amount" />
         </columns>
       </TableView>
-      <Button layoutX="381.0" layoutY="89.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" style="-fx-cursor: pointer;" text="shearch" onAction="#searchTr" />
       <ImageView fitHeight="42.0" fitWidth="48.0" layoutX="14.0" layoutY="16.0" onMouseClicked="#handleExit" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@Titles%20and%20Logos/arrow.png" />
          </image>
       </ImageView>
+      <Button layoutX="378.0" layoutY="88.0" mnemonicParsing="false" onAction="#searchTr" prefHeight="28.0" prefWidth="99.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

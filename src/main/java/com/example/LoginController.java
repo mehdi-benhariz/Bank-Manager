@@ -38,9 +38,7 @@ public class LoginController {
 
         } else {
             System.out.println("Login failed");
-            Notifier.showErrorMsg("Login failed", "somthing went wrong please try again");
-
-            // todo add error message
+            Notifier.showErrorMsg("Login failed", "CIN or password are wrong!");
         }
     }
 

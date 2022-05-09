@@ -7,12 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Polyline?>
-
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.OperationsController"  >
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00203FFF; -fx-opacity: 0.75;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.OperationsController">
    <children>
       <Polyline fill="#80ff0000" layoutX="60.0" layoutY="312.0" points="707.199951171875, -173.1999969482422, 347.9554443359375, -173.1999969482422, 149.5999755859375, -22.39996337890625, -289.199951171875, -22.39996337890625" stroke="#adefd1" strokeLineJoin="ROUND" strokeWidth="3.0" />
-      <Button layoutX="256.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-cursor: pointer;" text="Transfer" onAction="#handleTransfer" />
       <TextField fx:id="receiver" layoutX="191.0" layoutY="192.0" prefHeight="26.0" prefWidth="217.0" />
       <TextField fx:id="pwd" layoutX="191.0" layoutY="245.0" prefHeight="26.0" prefWidth="218.0" />
       <Label layoutX="191.0" layoutY="166.0" prefHeight="26.0" prefWidth="218.0" text="Reciever ICN" textFill="#adefd1">
@@ -36,10 +35,15 @@
             <Image url="@Titles%20and%20Logos/transfer.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="exit" fitHeight="38.0" fitWidth="41.0" layoutX="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" >
+      <ImageView fx:id="exit" fitHeight="38.0" fitWidth="41.0" layoutX="40.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@Titles%20and%20Logos/arrow.png" />
          </image>
       </ImageView>
+      <Button layoutX="188.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleTransfer" prefHeight="35.0" prefWidth="225.0" style="-fx-cursor: pointer; -fx-background-color: adefd1;" text="Send" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

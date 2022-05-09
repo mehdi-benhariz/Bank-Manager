@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.example.DAO.MyConnection;
-import com.example.utils.Security;
 
 /**
  * JavaFX App
@@ -31,7 +30,6 @@ public class App extends Application {
             // MyConnection.conn.close();
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
